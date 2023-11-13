@@ -871,6 +871,7 @@
             count.Name = "count";
             count.Size = new Size(72, 27);
             count.TabIndex = 49;
+            count.TextChanged += count_TextChanged;
             // 
             // label37
             // 

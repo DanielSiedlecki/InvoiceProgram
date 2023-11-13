@@ -10,6 +10,7 @@ namespace Invoice
         public class Commodity
         {
             public string Name { get; set; }
+            public string Count { get; set; }
             public string Unit { get; set; }
             public string NettoPrice { get; set; }
             public string PercentVat { get; set; }
@@ -189,13 +190,14 @@ namespace Invoice
         private void addItemButton_Click(object sender, EventArgs e)
         {
             string comName = commodityName.Text;
+            string cnt = count.Text;
             string unt = unitsList.SelectedItem?.ToString();
             string netPrice = priceNetto.Text;
             string percVat = vatPercentList.SelectedItem?.ToString();
             string couVAT = amountVAT.Text;
             string bruttPrice = priceBrutto.Text;
 
-            if (comName != null && unt != null && netPrice != null && percVat != null && couVAT != null && bruttPrice != null)
+            if (comName != null && cnt != null && unt != null && netPrice != null && percVat != null && couVAT != null && bruttPrice != null)
             {
 
                 try
@@ -203,6 +205,7 @@ namespace Invoice
                     Commodity com = new Commodity
                     {
                         Name = comName,
+                        Count = cnt,
                         Unit = unt,
                         NettoPrice = netPrice,
                         PercentVat = percVat,
@@ -229,6 +232,11 @@ namespace Invoice
         }
 
         private void commodityName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void count_TextChanged(object sender, EventArgs e)
         {
 
         }
