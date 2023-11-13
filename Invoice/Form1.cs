@@ -2,7 +2,8 @@ namespace Invoice
 {
     public partial class Form1 : Form
     {
-
+        private object listLock = new object();
+        private List<Commodity> lstCommodity = new List<Commodity>();
         private List<int> vatList = new List<int> { 23, 10, 30 };
         private List<string> unitList = new List<string> { "kg", "g", "szt", "kompl" };
         private List<string> paymentList = new List<string> { "gotówka", "przelew" };
@@ -10,29 +11,20 @@ namespace Invoice
         {
             public string Name { get; set; }
             public string Unit { get; set; }
-            public double NettoPrice { get; set; }
-            public int PercentVat { get; set; }
-            public double CountVAT { get; set; }
-            public double BruttoPrice { get; set; }
+            public string NettoPrice { get; set; }
+            public string PercentVat { get; set; }
+            public string CountVAT { get; set; }
+            public string BruttoPrice { get; set; }
         }
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        public void Form1_Load(object sender, EventArgs e)
         {
-            List<Commodity> lstCommodity = new List<Commodity>();
-            lstCommodity.Add(new Commodity()
-            {
-                Name = "Kurczak",
-                Unit = "kg",
-                NettoPrice = 380.30,
-                PercentVat = 23,
-                CountVAT = 380.30 * 0.23,
-                BruttoPrice = 380.30 + (380.30 * 0.23)
 
-            }); ;
+            this.Text = "Invoicer";
 
             priceBrutto.Visible = false;
             vatPercentList.DataSource = vatList;
@@ -42,7 +34,7 @@ namespace Invoice
 
             priceNetto.TextChanged += priceBrutto_TextChanged;
             priceNetto.KeyPress += TextBox_spaceKeyBlock;
-            commodityList.DataSource = lstCommodity;
+
 
         }
 
@@ -196,10 +188,47 @@ namespace Invoice
 
         private void addItemButton_Click(object sender, EventArgs e)
         {
+            string comName = commodityName.Text;
+            string unt = unitsList.SelectedItem?.ToString();
+            string netPrice = priceNetto.Text;
+            string percVat = vatPercentList.SelectedItem?.ToString();
+            string couVAT = amountVAT.Text;
+            string bruttPrice = priceBrutto.Text;
+
+            if (comName != null && unt != null && netPrice != null && percVat != null && couVAT != null && bruttPrice != null)
+            {
+
+                try
+                {
+                    Commodity com = new Commodity
+                    {
+                        Name = comName,
+                        Unit = unt,
+                        NettoPrice = netPrice,
+                        PercentVat = percVat,
+                        CountVAT = couVAT,
+                        BruttoPrice = bruttPrice
+                    };
+
+                    lstCommodity.Add(com);
+                    commodityList.DataSource = null;
+                    commodityList.DataSource = lstCommodity;
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error adding commodity: {ex.Message}");
+                }
+            }
 
         }
 
         private void commodityList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void commodityName_TextChanged(object sender, EventArgs e)
         {
 
         }
