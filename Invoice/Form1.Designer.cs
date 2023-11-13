@@ -70,7 +70,6 @@
             dateTimePicker2 = new DateTimePicker();
             label12 = new Label();
             label13 = new Label();
-            dataGridView1 = new DataGridView();
             label14 = new Label();
             label15 = new Label();
             label16 = new Label();
@@ -90,7 +89,7 @@
             label26 = new Label();
             textBox14 = new TextBox();
             priceNetto = new TextBox();
-            button2 = new Button();
+            addItemButton = new Button();
             vatPercentList = new ComboBox();
             paymentsList = new ComboBox();
             Personal_LeftSection = new GroupBox();
@@ -110,11 +109,12 @@
             unitsList = new ComboBox();
             priceBrutto = new TextBox();
             amountVAT = new TextBox();
+            commodityList = new DataGridView();
             Comp_LeftSection.SuspendLayout();
             Comp_RightSection.SuspendLayout();
             Personal_RightSection.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             Personal_LeftSection.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)commodityList).BeginInit();
             SuspendLayout();
             // 
             // Comp_LeftSection
@@ -128,7 +128,7 @@
             Comp_LeftSection.Controls.Add(textBox2);
             Comp_LeftSection.Controls.Add(label1);
             Comp_LeftSection.Controls.Add(textBox1);
-            Comp_LeftSection.Location = new Point(48, 122);
+            Comp_LeftSection.Location = new Point(188, 134);
             Comp_LeftSection.Margin = new Padding(3, 2, 3, 2);
             Comp_LeftSection.Name = "Comp_LeftSection";
             Comp_LeftSection.Padding = new Padding(3, 2, 3, 2);
@@ -229,7 +229,7 @@
             Comp_RightSection.Controls.Add(textBox9);
             Comp_RightSection.Controls.Add(label8);
             Comp_RightSection.Controls.Add(textBox10);
-            Comp_RightSection.Location = new Point(399, 122);
+            Comp_RightSection.Location = new Point(545, 124);
             Comp_RightSection.Margin = new Padding(3, 2, 3, 2);
             Comp_RightSection.Name = "Comp_RightSection";
             Comp_RightSection.Padding = new Padding(3, 2, 3, 2);
@@ -327,7 +327,7 @@
             Personal_RightSection.Controls.Add(textBox26);
             Personal_RightSection.Controls.Add(label36);
             Personal_RightSection.Controls.Add(textBox27);
-            Personal_RightSection.Location = new Point(400, 122);
+            Personal_RightSection.Location = new Point(545, 134);
             Personal_RightSection.Margin = new Padding(3, 2, 3, 2);
             Personal_RightSection.Name = "Personal_RightSection";
             Personal_RightSection.Padding = new Padding(3, 2, 3, 2);
@@ -433,7 +433,7 @@
             // personalCheckboxRight
             // 
             personalCheckboxRight.AutoSize = true;
-            personalCheckboxRight.Location = new Point(464, 99);
+            personalCheckboxRight.Location = new Point(610, 101);
             personalCheckboxRight.Margin = new Padding(3, 2, 3, 2);
             personalCheckboxRight.Name = "personalCheckboxRight";
             personalCheckboxRight.Size = new Size(60, 19);
@@ -445,7 +445,7 @@
             // companyCheckboxRight
             // 
             companyCheckboxRight.AutoSize = true;
-            companyCheckboxRight.Location = new Point(399, 99);
+            companyCheckboxRight.Location = new Point(545, 101);
             companyCheckboxRight.Margin = new Padding(3, 2, 3, 2);
             companyCheckboxRight.Name = "companyCheckboxRight";
             companyCheckboxRight.Size = new Size(56, 19);
@@ -457,7 +457,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(66, 7);
+            label9.Location = new Point(212, 9);
             label9.Name = "label9";
             label9.Size = new Size(86, 15);
             label9.TabIndex = 12;
@@ -466,7 +466,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(262, 7);
+            label10.Location = new Point(408, 9);
             label10.Name = "label10";
             label10.Size = new Size(100, 15);
             label10.TabIndex = 13;
@@ -475,7 +475,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(506, 7);
+            label11.Location = new Point(652, 9);
             label11.Name = "label11";
             label11.Size = new Size(86, 15);
             label11.TabIndex = 14;
@@ -483,7 +483,7 @@
             // 
             // textBox11
             // 
-            textBox11.Location = new Point(35, 24);
+            textBox11.Location = new Point(181, 26);
             textBox11.Margin = new Padding(3, 2, 3, 2);
             textBox11.Name = "textBox11";
             textBox11.Size = new Size(153, 23);
@@ -491,7 +491,7 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(208, 24);
+            dateTimePicker1.Location = new Point(354, 26);
             dateTimePicker1.Margin = new Padding(3, 2, 3, 2);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(219, 23);
@@ -499,7 +499,7 @@
             // 
             // dateTimePicker2
             // 
-            dateTimePicker2.Location = new Point(451, 24);
+            dateTimePicker2.Location = new Point(597, 26);
             dateTimePicker2.Margin = new Padding(3, 2, 3, 2);
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(219, 23);
@@ -509,7 +509,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.Location = new Point(48, 69);
+            label12.Location = new Point(194, 71);
             label12.Name = "label12";
             label12.Size = new Size(129, 30);
             label12.TabIndex = 17;
@@ -520,7 +520,7 @@
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label13.ImageAlign = ContentAlignment.TopLeft;
-            label13.Location = new Point(399, 69);
+            label13.Location = new Point(545, 71);
             label13.Margin = new Padding(0);
             label13.Name = "label13";
             label13.RightToLeft = RightToLeft.No;
@@ -528,24 +528,11 @@
             label13.TabIndex = 18;
             label13.Text = "Nabywca";
             // 
-            // dataGridView1
-            // 
-            dataGridView1.BackgroundColor = SystemColors.ButtonFace;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(49, 391);
-            dataGridView1.Margin = new Padding(3, 2, 3, 2);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(570, 105);
-            dataGridView1.TabIndex = 19;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
             // label14
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            label14.Location = new Point(280, 498);
+            label14.Location = new Point(426, 500);
             label14.Name = "label14";
             label14.Size = new Size(114, 45);
             label14.TabIndex = 10;
@@ -555,7 +542,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(400, 498);
+            label15.Location = new Point(546, 500);
             label15.Name = "label15";
             label15.Size = new Size(81, 15);
             label15.TabIndex = 9;
@@ -564,7 +551,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(527, 498);
+            label16.Location = new Point(673, 500);
             label16.Name = "label16";
             label16.Size = new Size(86, 15);
             label16.TabIndex = 22;
@@ -573,7 +560,7 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(48, 546);
+            label17.Location = new Point(194, 548);
             label17.Name = "label17";
             label17.Size = new Size(97, 15);
             label17.TabIndex = 9;
@@ -582,7 +569,7 @@
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(177, 546);
+            label19.Location = new Point(323, 548);
             label19.Name = "label19";
             label19.Size = new Size(94, 15);
             label19.TabIndex = 24;
@@ -591,7 +578,7 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(399, 546);
+            label18.Location = new Point(545, 548);
             label18.Name = "label18";
             label18.Size = new Size(54, 15);
             label18.TabIndex = 25;
@@ -600,7 +587,7 @@
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(48, 592);
+            label20.Location = new Point(194, 594);
             label20.Name = "label20";
             label20.Size = new Size(40, 15);
             label20.TabIndex = 26;
@@ -608,7 +595,7 @@
             // 
             // textBox12
             // 
-            textBox12.Location = new Point(48, 610);
+            textBox12.Location = new Point(194, 612);
             textBox12.Margin = new Padding(3, 2, 3, 2);
             textBox12.Multiline = true;
             textBox12.Name = "textBox12";
@@ -617,7 +604,7 @@
             // 
             // textBox13
             // 
-            textBox13.Location = new Point(399, 565);
+            textBox13.Location = new Point(545, 567);
             textBox13.Margin = new Padding(3, 2, 3, 2);
             textBox13.Name = "textBox13";
             textBox13.Size = new Size(271, 23);
@@ -625,7 +612,7 @@
             // 
             // dateTimePicker3
             // 
-            dateTimePicker3.Location = new Point(175, 565);
+            dateTimePicker3.Location = new Point(321, 567);
             dateTimePicker3.Margin = new Padding(3, 2, 3, 2);
             dateTimePicker3.Name = "dateTimePicker3";
             dateTimePicker3.Size = new Size(219, 23);
@@ -633,7 +620,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(538, 658);
+            button1.Location = new Point(684, 660);
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
             button1.Size = new Size(135, 22);
@@ -644,7 +631,7 @@
             // label21
             // 
             label21.AutoSize = true;
-            label21.Location = new Point(48, 321);
+            label21.Location = new Point(194, 323);
             label21.Name = "label21";
             label21.Size = new Size(138, 15);
             label21.TabIndex = 9;
@@ -653,7 +640,7 @@
             // label22
             // 
             label22.AutoSize = true;
-            label22.Location = new Point(206, 321);
+            label22.Location = new Point(352, 323);
             label22.Name = "label22";
             label22.Size = new Size(59, 15);
             label22.TabIndex = 30;
@@ -662,7 +649,7 @@
             // label23
             // 
             label23.AutoSize = true;
-            label23.Location = new Point(276, 321);
+            label23.Location = new Point(426, 323);
             label23.Name = "label23";
             label23.Size = new Size(67, 15);
             label23.TabIndex = 31;
@@ -671,7 +658,7 @@
             // label24
             // 
             label24.AutoSize = true;
-            label24.Location = new Point(366, 321);
+            label24.Location = new Point(512, 323);
             label24.Name = "label24";
             label24.Size = new Size(66, 15);
             label24.TabIndex = 32;
@@ -680,7 +667,7 @@
             // label25
             // 
             label25.AutoSize = true;
-            label25.Location = new Point(451, 321);
+            label25.Location = new Point(597, 323);
             label25.Name = "label25";
             label25.Size = new Size(62, 15);
             label25.TabIndex = 33;
@@ -689,7 +676,7 @@
             // label26
             // 
             label26.AutoSize = true;
-            label26.Location = new Point(526, 321);
+            label26.Location = new Point(672, 323);
             label26.Name = "label26";
             label26.Size = new Size(70, 15);
             label26.TabIndex = 34;
@@ -697,7 +684,7 @@
             // 
             // textBox14
             // 
-            textBox14.Location = new Point(48, 338);
+            textBox14.Location = new Point(193, 340);
             textBox14.Margin = new Padding(3, 2, 3, 2);
             textBox14.Name = "textBox14";
             textBox14.Size = new Size(141, 23);
@@ -705,27 +692,28 @@
             // 
             // priceNetto
             // 
-            priceNetto.Location = new Point(276, 338);
+            priceNetto.Location = new Point(422, 340);
             priceNetto.Margin = new Padding(3, 2, 3, 2);
             priceNetto.Name = "priceNetto";
             priceNetto.Size = new Size(71, 23);
             priceNetto.TabIndex = 36;
             priceNetto.TextChanged += priceNetto_TextChanged;
             // 
-            // button2
+            // addItemButton
             // 
-            button2.Location = new Point(48, 365);
-            button2.Margin = new Padding(3, 2, 3, 2);
-            button2.Name = "button2";
-            button2.Size = new Size(66, 22);
-            button2.TabIndex = 38;
-            button2.Text = "Dodaj";
-            button2.UseVisualStyleBackColor = true;
+            addItemButton.Location = new Point(194, 367);
+            addItemButton.Margin = new Padding(3, 2, 3, 2);
+            addItemButton.Name = "addItemButton";
+            addItemButton.Size = new Size(66, 22);
+            addItemButton.TabIndex = 38;
+            addItemButton.Text = "Dodaj";
+            addItemButton.UseVisualStyleBackColor = true;
+            addItemButton.Click += addItemButton_Click;
             // 
             // vatPercentList
             // 
             vatPercentList.FormattingEnabled = true;
-            vatPercentList.Location = new Point(366, 338);
+            vatPercentList.Location = new Point(512, 340);
             vatPercentList.Margin = new Padding(3, 2, 3, 2);
             vatPercentList.Name = "vatPercentList";
             vatPercentList.Size = new Size(65, 23);
@@ -735,7 +723,7 @@
             // paymentsList
             // 
             paymentsList.FormattingEnabled = true;
-            paymentsList.Location = new Point(50, 565);
+            paymentsList.Location = new Point(196, 567);
             paymentsList.Margin = new Padding(3, 2, 3, 2);
             paymentsList.Name = "paymentsList";
             paymentsList.Size = new Size(106, 23);
@@ -755,7 +743,7 @@
             Personal_LeftSection.Controls.Add(textBox19);
             Personal_LeftSection.Controls.Add(label30);
             Personal_LeftSection.Controls.Add(textBox20);
-            Personal_LeftSection.Location = new Point(48, 122);
+            Personal_LeftSection.Location = new Point(188, 134);
             Personal_LeftSection.Margin = new Padding(3, 2, 3, 2);
             Personal_LeftSection.Name = "Personal_LeftSection";
             Personal_LeftSection.Padding = new Padding(3, 2, 3, 2);
@@ -860,7 +848,7 @@
             // companyCheckboxLeft
             // 
             companyCheckboxLeft.AutoSize = true;
-            companyCheckboxLeft.Location = new Point(48, 101);
+            companyCheckboxLeft.Location = new Point(194, 103);
             companyCheckboxLeft.Margin = new Padding(3, 2, 3, 2);
             companyCheckboxLeft.Name = "companyCheckboxLeft";
             companyCheckboxLeft.Size = new Size(56, 19);
@@ -872,7 +860,7 @@
             // personalCheckboxLeft
             // 
             personalCheckboxLeft.AutoSize = true;
-            personalCheckboxLeft.Location = new Point(110, 101);
+            personalCheckboxLeft.Location = new Point(256, 103);
             personalCheckboxLeft.Margin = new Padding(3, 2, 3, 2);
             personalCheckboxLeft.Name = "personalCheckboxLeft";
             personalCheckboxLeft.Size = new Size(60, 19);
@@ -884,7 +872,7 @@
             // unitsList
             // 
             unitsList.FormattingEnabled = true;
-            unitsList.Location = new Point(208, 338);
+            unitsList.Location = new Point(354, 340);
             unitsList.Margin = new Padding(3, 2, 3, 2);
             unitsList.Name = "unitsList";
             unitsList.Size = new Size(63, 23);
@@ -893,7 +881,7 @@
             // 
             // priceBrutto
             // 
-            priceBrutto.Location = new Point(527, 338);
+            priceBrutto.Location = new Point(673, 340);
             priceBrutto.Name = "priceBrutto";
             priceBrutto.Size = new Size(76, 23);
             priceBrutto.TabIndex = 46;
@@ -901,17 +889,28 @@
             // 
             // amountVAT
             // 
-            amountVAT.Location = new Point(451, 339);
+            amountVAT.Location = new Point(597, 341);
             amountVAT.Name = "amountVAT";
             amountVAT.Size = new Size(62, 23);
             amountVAT.TabIndex = 47;
             amountVAT.TextChanged += amountVAT_TextChanged;
             // 
+            // commodityList
+            // 
+            commodityList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            commodityList.Location = new Point(109, 394);
+            commodityList.Name = "commodityList";
+            commodityList.RowTemplate.Height = 25;
+            commodityList.Size = new Size(831, 102);
+            commodityList.TabIndex = 48;
+            commodityList.CellContentClick += commodityList_CellContentClick;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 689);
+            ClientSize = new Size(1048, 689);
+            Controls.Add(commodityList);
             Controls.Add(amountVAT);
             Controls.Add(priceBrutto);
             Controls.Add(unitsList);
@@ -919,7 +918,7 @@
             Controls.Add(companyCheckboxLeft);
             Controls.Add(paymentsList);
             Controls.Add(vatPercentList);
-            Controls.Add(button2);
+            Controls.Add(addItemButton);
             Controls.Add(priceNetto);
             Controls.Add(textBox14);
             Controls.Add(label26);
@@ -939,7 +938,6 @@
             Controls.Add(label16);
             Controls.Add(label15);
             Controls.Add(label14);
-            Controls.Add(dataGridView1);
             Controls.Add(label13);
             Controls.Add(label12);
             Controls.Add(dateTimePicker2);
@@ -964,9 +962,9 @@
             Comp_RightSection.PerformLayout();
             Personal_RightSection.ResumeLayout(false);
             Personal_RightSection.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             Personal_LeftSection.ResumeLayout(false);
             Personal_LeftSection.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)commodityList).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1002,7 +1000,6 @@
         private DateTimePicker dateTimePicker2;
         private Label label12;
         private Label label13;
-        private DataGridView dataGridView1;
         private Label label14;
         private Label label15;
         private Label label16;
@@ -1022,7 +1019,7 @@
         private Label label26;
         private TextBox textBox14;
         private TextBox priceNetto;
-        private Button button2;
+        private Button addItemButton;
         private ComboBox vatPercentList;
         private GroupBox Personal_RightSection;
         private Label label32;
@@ -1054,5 +1051,6 @@
         private ComboBox unitsList;
         private TextBox priceBrutto;
         private TextBox amountVAT;
+        private DataGridView commodityList;
     }
 }

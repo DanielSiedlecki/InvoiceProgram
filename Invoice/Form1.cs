@@ -6,6 +6,15 @@ namespace Invoice
         private List<int> vatList = new List<int> { 23, 10, 30 };
         private List<string> unitList = new List<string> { "kg", "g", "szt", "kompl" };
         private List<string> paymentList = new List<string> { "gotówka", "przelew" };
+        public class Commodity
+        {
+            public string Name { get; set; }
+            public string Unit { get; set; }
+            public double NettoPrice { get; set; }
+            public int PercentVat { get; set; }
+            public double CountVAT { get; set; }
+            public double BruttoPrice { get; set; }
+        }
         public Form1()
         {
             InitializeComponent();
@@ -13,6 +22,18 @@ namespace Invoice
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            List<Commodity> lstCommodity = new List<Commodity>();
+            lstCommodity.Add(new Commodity()
+            {
+                Name = "Kurczak",
+                Unit = "kg",
+                NettoPrice = 380.30,
+                PercentVat = 23,
+                CountVAT = 380.30 * 0.23,
+                BruttoPrice = 380.30 + (380.30 * 0.23)
+
+            }); ;
+
             priceBrutto.Visible = false;
             vatPercentList.DataSource = vatList;
             vatPercentList.Format += VatPercentList_Format;
@@ -21,8 +42,11 @@ namespace Invoice
 
             priceNetto.TextChanged += priceBrutto_TextChanged;
             priceNetto.KeyPress += TextBox_spaceKeyBlock;
+            commodityList.DataSource = lstCommodity;
 
         }
+
+
         private void VatPercentList_Format(object sender, ListControlConvertEventArgs e)
         {
             if (e.ListItem != null)
@@ -166,6 +190,16 @@ namespace Invoice
         }
 
         private void amountVAT_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addItemButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void commodityList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
