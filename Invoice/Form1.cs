@@ -9,6 +9,8 @@ namespace Invoice
         private List<string> paymentList = new List<string> { "gotówka", "przelew" };
         public class Commodity
         {
+
+            
             public string Name { get; set; }
             public string Count { get; set; }
             public string Unit { get; set; }
@@ -16,6 +18,10 @@ namespace Invoice
             public string PercentVat { get; set; }
             public string CountVAT { get; set; }
             public string BruttoPrice { get; set; }
+
+
+
+
         }
         public Form1()
         {
@@ -228,15 +234,22 @@ namespace Invoice
 
             if (comName != null && cnt != null && unt != null && netPrice != null && percVat != null && couVAT != null && bruttPrice != null)
             {
-                DataGridViewButtonColumn uninstallButtonColumn = new DataGridViewButtonColumn();
-                uninstallButtonColumn.Name = "uninstall_column";
-                uninstallButtonColumn.Text = "Uninstall";
-                uninstallButtonColumn.UseColumnTextForButtonValue = true;
-                int columnIndex = 0;
-                commodityList.Columns.Insert(columnIndex, uninstallButtonColumn);
+            
+                
                 try
                 {
-                    Commodity com = new Commodity
+                   
+                   DataGridViewButtonColumn RemoveButtonColumn = new DataGridViewButtonColumn();
+                   RemoveButtonColumn.Name = "Action";
+                   RemoveButtonColumn.Text = "Usuñ";
+                   RemoveButtonColumn.UseColumnTextForButtonValue = true;
+                   int columnIndex = 0;
+                   if (commodityList.Columns["Action"] == null)
+                   {
+                       commodityList.Columns.Insert(columnIndex, RemoveButtonColumn);
+                   }
+
+                   Commodity com = new Commodity
                     {
                         Name = comName,
                         Count = cnt,
@@ -246,16 +259,19 @@ namespace Invoice
                         CountVAT = couVAT,
                         BruttoPrice = bruttPrice
                     };
-
+                    
                     lstCommodity.Add(com);
                     commodityList.DataSource = null;
                     commodityList.DataSource = lstCommodity;
+                   
 
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Error adding commodity: {ex.Message}");
                 }
+
+                
             }
 
         }
