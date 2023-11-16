@@ -75,10 +75,10 @@
             label16 = new Label();
             label17 = new Label();
             label19 = new Label();
-            label18 = new Label();
+            accountNumberLabel = new Label();
             label20 = new Label();
             textBox12 = new TextBox();
-            textBox13 = new TextBox();
+            accountNumber = new TextBox();
             dateTimePicker3 = new DateTimePicker();
             button1 = new Button();
             label21 = new Label();
@@ -550,14 +550,14 @@
             label19.TabIndex = 24;
             label19.Text = "Termin Płatności";
             // 
-            // label18
+            // accountNumberLabel
             // 
-            label18.AutoSize = true;
-            label18.Location = new Point(599, 734);
-            label18.Name = "label18";
-            label18.Size = new Size(68, 20);
-            label18.TabIndex = 25;
-            label18.Text = "Nr Konta";
+            accountNumberLabel.AutoSize = true;
+            accountNumberLabel.Location = new Point(599, 734);
+            accountNumberLabel.Name = "accountNumberLabel";
+            accountNumberLabel.Size = new Size(68, 20);
+            accountNumberLabel.TabIndex = 25;
+            accountNumberLabel.Text = "Nr Konta";
             // 
             // label20
             // 
@@ -576,12 +576,12 @@
             textBox12.Size = new Size(881, 56);
             textBox12.TabIndex = 27;
             // 
-            // textBox13
+            // accountNumber
             // 
-            textBox13.Location = new Point(599, 757);
-            textBox13.Name = "textBox13";
-            textBox13.Size = new Size(309, 27);
-            textBox13.TabIndex = 9;
+            accountNumber.Location = new Point(599, 757);
+            accountNumber.Name = "accountNumber";
+            accountNumber.Size = new Size(250, 27);
+            accountNumber.TabIndex = 9;
             // 
             // dateTimePicker3
             // 
@@ -671,7 +671,7 @@
             // 
             // addItemButton
             // 
-            addItemButton.Location = new Point(1025, 451);
+            addItemButton.Location = new Point(1026, 448);
             addItemButton.Name = "addItemButton";
             addItemButton.Size = new Size(75, 31);
             addItemButton.TabIndex = 38;
@@ -910,10 +910,10 @@
             Controls.Add(label21);
             Controls.Add(button1);
             Controls.Add(dateTimePicker3);
-            Controls.Add(textBox13);
+            Controls.Add(accountNumber);
             Controls.Add(textBox12);
             Controls.Add(label20);
-            Controls.Add(label18);
+            Controls.Add(accountNumberLabel);
             Controls.Add(label19);
             Controls.Add(label17);
             Controls.Add(label16);
@@ -983,10 +983,10 @@
         private Label label16;
         private Label label17;
         private Label label19;
-        private Label label18;
+        private Label accountNumberLabel;
         private Label label20;
         private TextBox textBox12;
-        private TextBox textBox13;
+        private TextBox accountNumber;
         private DateTimePicker dateTimePicker3;
         private Button button1;
         private Label label21;

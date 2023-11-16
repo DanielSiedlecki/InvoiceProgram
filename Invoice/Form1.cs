@@ -34,9 +34,21 @@ namespace Invoice
             paymentsList.DataSource = paymentList;
 
             priceNetto.TextChanged += priceBrutto_TextChanged;
+
             priceNetto.KeyPress += TextBox_spaceKeyBlock;
+            priceNetto.KeyPress += TextBox_letterKeyBlock;
 
+            count.KeyPress += TextBox_letterKeyBlock;
+            count.KeyPress += TextBox_letterKeyBlock;
 
+            amountVAT.KeyPress += TextBox_letterKeyBlock;
+            amountVAT.KeyPress += TextBox_letterKeyBlock;
+
+            priceBrutto.KeyPress += TextBox_letterKeyBlock;
+            priceBrutto.KeyPress += TextBox_letterKeyBlock;
+
+            accountNumber.KeyPress += TextBox_letterKeyBlock;
+            accountNumber.KeyPress += TextBox_letterKeyBlock;
         }
 
 
@@ -54,6 +66,14 @@ namespace Invoice
         private void TextBox_spaceKeyBlock(object sender, KeyPressEventArgs e)
         {
             e.Handled = (e.KeyChar == (char)Keys.Space);
+        }
+        private void TextBox_letterKeyBlock(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true;
+
+            }
         }
         private void label1_Click(object sender, EventArgs e)
         {
@@ -154,7 +174,7 @@ namespace Invoice
 
         private void paymentsList_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+           
         }
 
         private void priceNetto_TextChanged(object sender, EventArgs e)
@@ -199,7 +219,12 @@ namespace Invoice
 
             if (comName != null && cnt != null && unt != null && netPrice != null && percVat != null && couVAT != null && bruttPrice != null)
             {
-
+                DataGridViewButtonColumn uninstallButtonColumn = new DataGridViewButtonColumn();
+                uninstallButtonColumn.Name = "uninstall_column";
+                uninstallButtonColumn.Text = "Uninstall";
+                uninstallButtonColumn.UseColumnTextForButtonValue = true;
+                int columnIndex = 0;
+                commodityList.Columns.Insert(columnIndex, uninstallButtonColumn);
                 try
                 {
                     Commodity com = new Commodity
