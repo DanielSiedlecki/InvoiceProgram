@@ -174,7 +174,16 @@ namespace Invoice
 
         private void paymentsList_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+            if (paymentsList.SelectedItem == "gotówka")
+            {
+                accountNumber.Visible = false;
+                accountNumberLabel.Visible = false;
+            }
+            else
+            {
+                accountNumber.Visible = true;
+                accountNumberLabel.Visible = true;
+            }
         }
 
         private void priceNetto_TextChanged(object sender, EventArgs e)
