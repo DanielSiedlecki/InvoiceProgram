@@ -75,10 +75,8 @@
             label16 = new Label();
             label17 = new Label();
             label19 = new Label();
-            accountNumberLabel = new Label();
             label20 = new Label();
             textBox12 = new TextBox();
-            accountNumber = new TextBox();
             dateTimePicker3 = new DateTimePicker();
             button1 = new Button();
             label21 = new Label();
@@ -114,6 +112,8 @@
             label37 = new Label();
             nettoSum = new Label();
             bruttSum = new Label();
+            accountNumber = new TextBox();
+            accountNumberLabel = new Label();
             Comp_LeftSection.SuspendLayout();
             Comp_RightSection.SuspendLayout();
             Personal_RightSection.SuspendLayout();
@@ -552,15 +552,6 @@
             label19.TabIndex = 24;
             label19.Text = "Termin Płatności";
             // 
-            // accountNumberLabel
-            // 
-            accountNumberLabel.AutoSize = true;
-            accountNumberLabel.Location = new Point(599, 734);
-            accountNumberLabel.Name = "accountNumberLabel";
-            accountNumberLabel.Size = new Size(68, 20);
-            accountNumberLabel.TabIndex = 25;
-            accountNumberLabel.Text = "Nr Konta";
-            // 
             // label20
             // 
             label20.AutoSize = true;
@@ -577,13 +568,6 @@
             textBox12.Name = "textBox12";
             textBox12.Size = new Size(881, 56);
             textBox12.TabIndex = 27;
-            // 
-            // accountNumber
-            // 
-            accountNumber.Location = new Point(599, 757);
-            accountNumber.Name = "accountNumber";
-            accountNumber.Size = new Size(250, 27);
-            accountNumber.TabIndex = 9;
             // 
             // dateTimePicker3
             // 
@@ -905,11 +889,29 @@
             bruttSum.TabIndex = 52;
             bruttSum.Visible = false;
             // 
+            // accountNumber
+            // 
+            accountNumber.Location = new Point(755, 754);
+            accountNumber.Name = "accountNumber";
+            accountNumber.Size = new Size(250, 27);
+            accountNumber.TabIndex = 9;
+            // 
+            // accountNumberLabel
+            // 
+            accountNumberLabel.AutoSize = true;
+            accountNumberLabel.Location = new Point(755, 731);
+            accountNumberLabel.Name = "accountNumberLabel";
+            accountNumberLabel.Size = new Size(68, 20);
+            accountNumberLabel.TabIndex = 25;
+            accountNumberLabel.Text = "Nr Konta";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1198, 944);
+            Controls.Add(accountNumberLabel);
+            Controls.Add(accountNumber);
             Controls.Add(bruttSum);
             Controls.Add(nettoSum);
             Controls.Add(label37);
@@ -935,10 +937,8 @@
             Controls.Add(label21);
             Controls.Add(button1);
             Controls.Add(dateTimePicker3);
-            Controls.Add(accountNumber);
             Controls.Add(textBox12);
             Controls.Add(label20);
-            Controls.Add(accountNumberLabel);
             Controls.Add(label19);
             Controls.Add(label17);
             Controls.Add(label16);
@@ -1008,10 +1008,8 @@
         private Label label16;
         private Label label17;
         private Label label19;
-        private Label accountNumberLabel;
         private Label label20;
         private TextBox textBox12;
-        private TextBox accountNumber;
         private DateTimePicker dateTimePicker3;
         private Button button1;
         private Label label21;
@@ -1059,5 +1057,7 @@
         private Label label37;
         private Label nettoSum;
         private Label bruttSum;
+        private TextBox accountNumber;
+        private Label accountNumberLabel;
     }
 }

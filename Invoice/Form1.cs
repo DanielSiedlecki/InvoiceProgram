@@ -48,10 +48,8 @@ namespace Invoice
             amountVAT.KeyPress += Validation_KeyPress;
 
             priceBrutto.KeyPress += Validation_KeyPress;
-         
 
-            accountNumber.KeyPress += TextBox_letterKeyBlock;
-            accountNumber.KeyPress += TextBox_letterKeyBlock;
+            accountNumber.KeyPress += onlyNumberValidation_KeyPress;
 
         }
 
@@ -67,7 +65,17 @@ namespace Invoice
                 e.Value = null;
             }
         }
+        private void onlyNumberValidation_KeyPress(object sender, KeyPressEventArgs e)
 
+
+        {
+            if ((!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) || (e.KeyChar == (char)Keys.Space))
+            {
+
+                e.Handled = true;
+            }
+
+        }
         private void Validation_KeyPress(object sender, KeyPressEventArgs e)
         {
             TextBox textBox = sender as TextBox;
