@@ -112,6 +112,8 @@
             commodityList = new DataGridView();
             count = new TextBox();
             label37 = new Label();
+            nettoSum = new Label();
+            bruttSum = new Label();
             Comp_LeftSection.SuspendLayout();
             Comp_RightSection.SuspendLayout();
             Personal_RightSection.SuspendLayout();
@@ -882,11 +884,34 @@
             label37.TabIndex = 50;
             label37.Text = "Ilość";
             // 
+            // nettoSum
+            // 
+            nettoSum.AutoSize = true;
+            nettoSum.Font = new Font("Arial", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
+            nettoSum.Location = new Point(740, 683);
+            nettoSum.Name = "nettoSum";
+            nettoSum.Size = new Size(0, 33);
+            nettoSum.TabIndex = 51;
+            nettoSum.Visible = false;
+            nettoSum.Click += nettoSum_Click;
+            // 
+            // bruttSum
+            // 
+            bruttSum.AutoSize = true;
+            bruttSum.Font = new Font("Arial", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
+            bruttSum.Location = new Point(899, 686);
+            bruttSum.Name = "bruttSum";
+            bruttSum.Size = new Size(0, 33);
+            bruttSum.TabIndex = 52;
+            bruttSum.Visible = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1198, 944);
+            Controls.Add(bruttSum);
+            Controls.Add(nettoSum);
             Controls.Add(label37);
             Controls.Add(count);
             Controls.Add(Comp_RightSection);
@@ -1032,5 +1057,7 @@
         private DataGridView commodityList;
         private TextBox count;
         private Label label37;
+        private Label nettoSum;
+        private Label bruttSum;
     }
 }

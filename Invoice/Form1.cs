@@ -10,7 +10,7 @@ namespace Invoice
         public class Commodity
         {
 
-            
+
             public string Name { get; set; }
             public string Count { get; set; }
             public string Unit { get; set; }
@@ -55,6 +55,7 @@ namespace Invoice
 
             accountNumber.KeyPress += TextBox_letterKeyBlock;
             accountNumber.KeyPress += TextBox_letterKeyBlock;
+
         }
 
 
@@ -234,22 +235,22 @@ namespace Invoice
 
             if (comName != null && cnt != null && unt != null && netPrice != null && percVat != null && couVAT != null && bruttPrice != null)
             {
-            
-                
+
+
                 try
                 {
-                   
-                   DataGridViewButtonColumn RemoveButtonColumn = new DataGridViewButtonColumn();
-                   RemoveButtonColumn.Name = "Action";
-                   RemoveButtonColumn.Text = "Usuñ";
-                   RemoveButtonColumn.UseColumnTextForButtonValue = true;
-                   int columnIndex = 0;
-                   if (commodityList.Columns["Action"] == null)
-                   {
-                       commodityList.Columns.Insert(columnIndex, RemoveButtonColumn);
-                   }
 
-                   Commodity com = new Commodity
+                    DataGridViewButtonColumn RemoveButtonColumn = new DataGridViewButtonColumn();
+                    RemoveButtonColumn.Name = "Action";
+                    RemoveButtonColumn.Text = "Usuñ";
+                    RemoveButtonColumn.UseColumnTextForButtonValue = true;
+                    int columnIndex = 0;
+                    if (commodityList.Columns["Action"] == null)
+                    {
+                        commodityList.Columns.Insert(columnIndex, RemoveButtonColumn);
+                    }
+
+                    Commodity com = new Commodity
                     {
                         Name = comName,
                         Count = cnt,
@@ -259,11 +260,14 @@ namespace Invoice
                         CountVAT = couVAT,
                         BruttoPrice = bruttPrice
                     };
-                    
+
                     lstCommodity.Add(com);
                     commodityList.DataSource = null;
                     commodityList.DataSource = lstCommodity;
-                   
+
+                    EventArgs eventArgs = new EventArgs();
+                    nettoSum_Click(this, eventArgs);
+
 
                 }
                 catch (Exception ex)
@@ -271,7 +275,7 @@ namespace Invoice
                     Console.WriteLine($"Error adding commodity: {ex.Message}");
                 }
 
-                
+
             }
 
         }
@@ -289,6 +293,22 @@ namespace Invoice
         private void count_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void nettoSum_Click(object sender, EventArgs e)
+        {
+
+            if (lstCommodity.Count > 0)
+            {
+                nettoSum.Visible = true;
+            }
+            double sumNetto = 0;
+            foreach (Commodity com in lstCommodity)
+            {
+                sumNetto += System.Convert.ToDouble(com.NettoPrice);
+
+            }
+            nettoSum.Text = sumNetto.ToString();
         }
     }
 }
