@@ -248,6 +248,20 @@ namespace Invoice
 
         private void addItemButton_Click(object sender, EventArgs e)
         {
+
+            if (string.IsNullOrWhiteSpace(commodityName.Text) ||
+                string.IsNullOrWhiteSpace(count.Text) ||
+                unitsList.SelectedValue == null ||
+                string.IsNullOrWhiteSpace(priceNetto.Text) ||
+                string.IsNullOrWhiteSpace(priceBrutto.Text) ||
+                vatPercentList.SelectedValue == null ||
+                string.IsNullOrWhiteSpace(amountVAT.Text))
+            {
+                return;
+            }
+
+
+
             string comName = commodityName.Text;
             string cnt = count.Text;
             string unt = unitsList.SelectedItem?.ToString();
@@ -305,6 +319,22 @@ namespace Invoice
         private void commodityList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+            if (commodityList.Columns[e.ColumnIndex].Name == "Action")
+            {
+                if (e.RowIndex < lstCommodity.Count)
+                {
+
+                    lstCommodity.RemoveAt(e.RowIndex);
+                    RefreshDataGridView();
+                }
+            }
+        }
+
+        private void RefreshDataGridView()
+        {
+
+            commodityList.DataSource = null;
+            commodityList.DataSource = lstCommodity;
         }
 
         private void commodityName_TextChanged(object sender, EventArgs e)
