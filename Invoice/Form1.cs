@@ -41,17 +41,14 @@ namespace Invoice
 
             priceNetto.TextChanged += priceBrutto_TextChanged;
 
-            priceNetto.KeyPress += TextBox_spaceKeyBlock;
-            priceNetto.KeyPress += TextBox_letterKeyBlock;
+            priceNetto.KeyPress += Validation_KeyPress;
 
-            count.KeyPress += TextBox_letterKeyBlock;
-            count.KeyPress += TextBox_letterKeyBlock;
+            count.KeyPress += Validation_KeyPress;
 
-            amountVAT.KeyPress += TextBox_letterKeyBlock;
-            amountVAT.KeyPress += TextBox_letterKeyBlock;
+            amountVAT.KeyPress += Validation_KeyPress;
 
-            priceBrutto.KeyPress += TextBox_letterKeyBlock;
-            priceBrutto.KeyPress += TextBox_letterKeyBlock;
+            priceBrutto.KeyPress += Validation_KeyPress;
+         
 
             accountNumber.KeyPress += TextBox_letterKeyBlock;
             accountNumber.KeyPress += TextBox_letterKeyBlock;
@@ -70,16 +67,34 @@ namespace Invoice
                 e.Value = null;
             }
         }
-        private void TextBox_spaceKeyBlock(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = (e.KeyChar == (char)Keys.Space);
-        }
-        private void TextBox_letterKeyBlock(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
 
+        private void Validation_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+
+            if (textBox != null)
+            {
+                string text = textBox.Text;
+                char keyPressed = e.KeyChar;
+
+                if (char.IsLetter(keyPressed) || keyPressed == '.' || keyPressed == ',' && text.Contains(',') || keyPressed == (char)Keys.Space)
+                {
+                    e.Handled = true;
+                }
+                else if (keyPressed == (char)Keys.Back)
+                {
+                    return;
+                }
+                else if (text.Contains(','))
+                {
+                    string[] parts = text.Split(',');
+                    string lastPart = parts[parts.Length - 1];
+
+                    if (lastPart.Length >= 2)
+                    {
+                        e.Handled = true;
+                    }
+                }
             }
         }
         private void label1_Click(object sender, EventArgs e)
@@ -265,8 +280,7 @@ namespace Invoice
                     commodityList.DataSource = null;
                     commodityList.DataSource = lstCommodity;
 
-                    EventArgs eventArgs = new EventArgs();
-                    nettoSum_Click(this, eventArgs);
+                    sumFinalPrice_Click();
 
 
                 }
@@ -294,21 +308,29 @@ namespace Invoice
         {
 
         }
-
         private void nettoSum_Click(object sender, EventArgs e)
+        {
+        }
+        private void sumFinalPrice_Click()
         {
 
             if (lstCommodity.Count > 0)
             {
                 nettoSum.Visible = true;
+                bruttSum.Visible = true;
             }
             double sumNetto = 0;
+            double sumBrutto = 0;
             foreach (Commodity com in lstCommodity)
             {
                 sumNetto += System.Convert.ToDouble(com.NettoPrice);
+                sumBrutto += System.Convert.ToDouble(com.BruttoPrice);
 
             }
-            nettoSum.Text = sumNetto.ToString();
+            nettoSum.Text = Math.Round(sumNetto, 2).ToString();
+            bruttSum.Text = Math.Round(sumBrutto, 2).ToString();
         }
+
+
     }
 }
