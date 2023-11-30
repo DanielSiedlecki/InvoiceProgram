@@ -244,11 +244,12 @@ namespace Invoice
                 if (vatPercentList.SelectedItem != null && int.TryParse(vatPercentList.SelectedItem.ToString(), out int VAT))
                 {
 
-                    decimal percentVAT = VAT * 0.01m;
-                    decimal countVAT = Math.Round(percentVAT * priceBrutt, 2);
-                    decimal Netto = Math.Round(priceBrutt - countVAT, 2);
+                    decimal percentVAT = 1 + (VAT * 0.01m);
+                    decimal Netto = Math.Round(priceBrutt / percentVAT, 2);
+                    decimal countVAT = Math.Round(priceBrutt - Netto, 2);
+
                     amountVAT.Text = countVAT.ToString();
-                    priceNetto.Text = Netto.ToString(); ;
+                    priceNetto.Text = Netto.ToString();
                 }
 
             }
