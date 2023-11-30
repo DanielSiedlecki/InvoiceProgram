@@ -257,6 +257,9 @@ namespace Invoice
                 vatPercentList.SelectedValue == null ||
                 string.IsNullOrWhiteSpace(amountVAT.Text))
             {
+                DialogResult error = MessageBox.Show("Complete all field",
+                                   "Error", MessageBoxButtons.OK,
+                                   MessageBoxIcon.Question);
                 return;
             }
 
@@ -308,7 +311,12 @@ namespace Invoice
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Error adding commodity: {ex.Message}");
+                    string err = $"Error adding commodity: {ex.Message}";
+                    Console.WriteLine(err);
+                    DialogResult error = MessageBox.Show(err,
+                                   "Error", MessageBoxButtons.OK,
+                                   MessageBoxIcon.Question);
+                    
                 }
 
 
