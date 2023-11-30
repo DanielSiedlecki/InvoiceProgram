@@ -81,10 +81,8 @@
             button1 = new Button();
             label21 = new Label();
             label22 = new Label();
-            label23 = new Label();
             label24 = new Label();
             label25 = new Label();
-            label26 = new Label();
             commodityName = new TextBox();
             priceNetto = new TextBox();
             addItemButton = new Button();
@@ -114,6 +112,8 @@
             bruttSum = new Label();
             accountNumber = new TextBox();
             accountNumberLabel = new Label();
+            priceNettoCheck = new CheckBox();
+            priceBruttoCheck = new CheckBox();
             Comp_LeftSection.SuspendLayout();
             Comp_RightSection.SuspendLayout();
             Personal_RightSection.SuspendLayout();
@@ -603,15 +603,6 @@
             label22.TabIndex = 30;
             label22.Text = "Jednostka";
             // 
-            // label23
-            // 
-            label23.AutoSize = true;
-            label23.Location = new Point(543, 431);
-            label23.Name = "label23";
-            label23.Size = new Size(84, 20);
-            label23.TabIndex = 31;
-            label23.Text = "Cena Netto";
-            // 
             // label24
             // 
             label24.AutoSize = true;
@@ -630,15 +621,6 @@
             label25.TabIndex = 33;
             label25.Text = "Kwota VAT";
             // 
-            // label26
-            // 
-            label26.AutoSize = true;
-            label26.Location = new Point(897, 427);
-            label26.Name = "label26";
-            label26.Size = new Size(87, 20);
-            label26.TabIndex = 34;
-            label26.Text = "Cena Brutto";
-            // 
             // commodityName
             // 
             commodityName.Location = new Point(127, 453);
@@ -649,9 +631,10 @@
             // 
             // priceNetto
             // 
+            priceNetto.Enabled = false;
             priceNetto.Location = new Point(543, 453);
             priceNetto.Name = "priceNetto";
-            priceNetto.Size = new Size(105, 27);
+            priceNetto.Size = new Size(114, 27);
             priceNetto.TabIndex = 36;
             priceNetto.TextChanged += priceNetto_TextChanged;
             // 
@@ -823,10 +806,11 @@
             // 
             // priceBrutto
             // 
+            priceBrutto.Enabled = false;
             priceBrutto.Location = new Point(897, 451);
             priceBrutto.Margin = new Padding(3, 4, 3, 4);
             priceBrutto.Name = "priceBrutto";
-            priceBrutto.Size = new Size(109, 27);
+            priceBrutto.Size = new Size(117, 27);
             priceBrutto.TabIndex = 46;
             priceBrutto.TextChanged += priceBrutto_TextChanged;
             // 
@@ -905,11 +889,35 @@
             accountNumberLabel.TabIndex = 25;
             accountNumberLabel.Text = "Nr Konta";
             // 
+            // priceNettoCheck
+            // 
+            priceNettoCheck.AutoSize = true;
+            priceNettoCheck.Location = new Point(543, 431);
+            priceNettoCheck.Name = "priceNettoCheck";
+            priceNettoCheck.Size = new Size(114, 24);
+            priceNettoCheck.TabIndex = 53;
+            priceNettoCheck.Text = "Kwota Netto";
+            priceNettoCheck.UseVisualStyleBackColor = true;
+            priceNettoCheck.CheckedChanged += priceNettoCheck_CheckedChanged;
+            // 
+            // priceBruttoCheck
+            // 
+            priceBruttoCheck.AutoSize = true;
+            priceBruttoCheck.Location = new Point(897, 431);
+            priceBruttoCheck.Name = "priceBruttoCheck";
+            priceBruttoCheck.Size = new Size(117, 24);
+            priceBruttoCheck.TabIndex = 54;
+            priceBruttoCheck.Text = "Kwota Brutto";
+            priceBruttoCheck.UseVisualStyleBackColor = true;
+            priceBruttoCheck.CheckedChanged += priceBruttoCheck_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1198, 944);
+            Controls.Add(priceBruttoCheck);
+            Controls.Add(priceNettoCheck);
             Controls.Add(accountNumberLabel);
             Controls.Add(accountNumber);
             Controls.Add(bruttSum);
@@ -929,10 +937,8 @@
             Controls.Add(Personal_LeftSection);
             Controls.Add(priceNetto);
             Controls.Add(commodityName);
-            Controls.Add(label26);
             Controls.Add(label25);
             Controls.Add(label24);
-            Controls.Add(label23);
             Controls.Add(label22);
             Controls.Add(label21);
             Controls.Add(button1);
@@ -1014,10 +1020,8 @@
         private Button button1;
         private Label label21;
         private Label label22;
-        private Label label23;
         private Label label24;
         private Label label25;
-        private Label label26;
         private TextBox commodityName;
         private TextBox priceNetto;
         private Button addItemButton;
@@ -1059,5 +1063,7 @@
         private Label bruttSum;
         private TextBox accountNumber;
         private Label accountNumberLabel;
+        private CheckBox priceNettoCheck;
+        private CheckBox priceBruttoCheck;
     }
 }

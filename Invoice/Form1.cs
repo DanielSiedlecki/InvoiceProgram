@@ -33,7 +33,6 @@ namespace Invoice
 
             this.Text = "Invoicer";
 
-            priceBrutto.Visible = false;
             vatPercentList.DataSource = vatList;
             vatPercentList.Format += VatPercentList_Format;
             unitsList.DataSource = unitList;
@@ -220,25 +219,39 @@ namespace Invoice
         {
 
 
-            if (int.TryParse(priceNetto.Text, out int priceNett))
+            if (decimal.TryParse(priceNetto.Text, out decimal priceNett) && priceNettoCheck.Checked)
             {
+
 
                 if (vatPercentList.SelectedItem != null && int.TryParse(vatPercentList.SelectedItem.ToString(), out int VAT))
                 {
-                    priceBrutto.Visible = true;
-                    double percentVAT = VAT * 0.01;
-                    double countVAT = Math.Round(percentVAT * priceNett, 2);
-                    double Brutto = Math.Round(priceNett + countVAT, 2);
+
+                    decimal percentVAT = VAT * 0.01m;
+                    decimal countVAT = Math.Round(percentVAT * priceNett, 2);
+                    decimal Brutto = Math.Round(priceNett + countVAT, 2);
                     amountVAT.Text = countVAT.ToString();
                     priceBrutto.Text = Brutto.ToString(); ;
                 }
 
             }
         }
-
         private void priceBrutto_TextChanged(object sender, EventArgs e)
         {
+            if (decimal.TryParse(priceBrutto.Text, out decimal priceBrutt) && priceBruttoCheck.Checked)
+            {
 
+
+                if (vatPercentList.SelectedItem != null && int.TryParse(vatPercentList.SelectedItem.ToString(), out int VAT))
+                {
+
+                    decimal percentVAT = VAT * 0.01m;
+                    decimal countVAT = Math.Round(percentVAT * priceBrutt, 2);
+                    decimal Netto = Math.Round(priceBrutt - countVAT, 2);
+                    amountVAT.Text = countVAT.ToString();
+                    priceNetto.Text = Netto.ToString(); ;
+                }
+
+            }
         }
 
         private void amountVAT_TextChanged(object sender, EventArgs e)
@@ -316,7 +329,7 @@ namespace Invoice
                     DialogResult error = MessageBox.Show(err,
                                    "Error", MessageBoxButtons.OK,
                                    MessageBoxIcon.Question);
-                    
+
                 }
 
 
@@ -377,6 +390,43 @@ namespace Invoice
             bruttSum.Text = Math.Round(sumBrutto, 2).ToString();
         }
 
+        private void priceNettoCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (priceNettoCheck.Checked)
+            {
+                priceNetto.Enabled = true;
+                priceBruttoCheck.Enabled = false;
+                priceBrutto.Enabled = false;
+            }
+            else
+            {
+                priceNetto.Enabled = false;
+                priceBruttoCheck.Enabled = true;
+                priceBrutto.Enabled = false ;
+                priceBrutto.Text = "";
+                priceNetto.Text = "";
+                amountVAT.Text = "";
+            }
+        }
 
+        private void priceBruttoCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (priceBruttoCheck.Checked)
+            {
+                priceBrutto.Enabled = true;
+                priceNettoCheck.Enabled = false;
+                priceNetto.Enabled = false;
+            }
+            else
+            {
+                priceNetto.Enabled = false;
+                priceNettoCheck.Enabled = true;
+                priceBrutto.Enabled = false;
+                priceNetto.Enabled = false;
+                priceNetto.Text = "";
+                priceBrutto.Text = "";
+                amountVAT.Text = "";
+            }
+        }
     }
 }
